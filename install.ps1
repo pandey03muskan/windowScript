@@ -3,7 +3,7 @@
 # URL to your .exe file on GitHub Releases
 $downloadUrl = "https://github.com/pandey03muskan/AudioBook/releases/download/Initz/Initz.exe"
 $exeName = "Initz.exe"
-$installPath = "C:\Program Files\Initz"
+$installPath = "C:\Users\MuskanPandey"
 
 # Create the installation directory
 if (!(Test-Path -Path $installPath)) {
