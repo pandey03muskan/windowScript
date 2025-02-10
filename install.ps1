@@ -1,18 +1,17 @@
 # PowerShell Script to Install the CLI Tool
 
-# URL to your .exe file on GitHub Releases
-$downloadUrl = "https://github.com/pandey03muskan/AudioBook/releases/download/Initz/Initz.exe"
-$exeName = "Initz.exe"
-$installPath = "C:\Users\MuskanPandey"
+$installPath = "$env:USERPROFILE\Initz"  # Set install path
+$cliFilename = "Initz.exe"               # Set CLI executable name
 
-# Create the installation directory
+# Ensure the directory exists
 if (!(Test-Path -Path $installPath)) {
-    New-Item -ItemType Directory -Path $installPath
+    New-Item -ItemType Directory -Path $installPath -Force
 }
 
-# Download the .exe file
-Write-Host "Downloading CLI tool..."
-Invoke-WebRequest -Uri $downloadUrl -OutFile "$installPath\$initz"
+$downloadUrl = "https://github.com/pandey03muskan/AudioBook/releases/download/Initz/Initz.exe"
+
+Write-Output "Downloading CLI tool to: $installPath\$cliFilename"
+Invoke-WebRequest -Uri $downloadUrl -OutFile "$installPath\$cliFilename" -UseBasicParsing
 
 # Add the directory to the system PATH
 Write-Host "Adding CLI tool to PATH..."
@@ -21,4 +20,5 @@ $env:Path += ";$installPath"
 
 # Confirm installation
 Write-Host "Installation complete! You can now use '$initz' from any terminal."
+
 
